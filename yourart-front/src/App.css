@@ -1,0 +1,7 @@
+button {
+  /* all: unset; */
+  text-align: center;
+  display: block;
+  margin: 0;
+  border-style: none;
+}

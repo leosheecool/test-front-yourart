@@ -1,0 +1,22 @@
+@import 'styles/colors';
+
+.container {
+  display: flex;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.link {
+  color: $gray;
+  font-weight: 700;
+  text-decoration: none;
+
+  &:hover {
+    color: black;
+    text-decoration: underline;
+  }
+
+  &.active {
+    color: black;
+  }
+}
