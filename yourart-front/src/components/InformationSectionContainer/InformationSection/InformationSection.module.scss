@@ -7,8 +7,24 @@
   }
 }
 
-.title {
+.titleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-right: 16px;
   cursor: pointer;
+
+  .arrow {
+    height: 100%;
+
+    &.reversed {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.title {
   width: 100%;
   margin: 0;
   padding: 1rem 0;

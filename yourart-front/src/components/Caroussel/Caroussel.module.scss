@@ -1,0 +1,42 @@
+@import 'styles/colors';
+
+.container {
+  padding: 16px;
+  margin: 16px 0;
+  margin-bottom: 24px;
+}
+
+.imageContainer {
+  height: 250px;
+  display: flex !important;
+  justify-content: center;
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+  margin: 0 16px;
+  object-fit: cover;
+}
+
+.arrow {
+  display: block;
+  width: unset;
+  height: unset;
+  opacity: 0.6;
+  color: black;
+  padding: 10px;
+
+  &::before {
+    content: unset;
+  }
+
+  &:hover {
+    color: black;
+    opacity: 1;
+  }
+}
+.hidden {
+  display: none;
+  // opacity: 0.25 !important;
+}

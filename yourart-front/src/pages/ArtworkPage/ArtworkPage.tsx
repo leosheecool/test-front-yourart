@@ -16,6 +16,7 @@ import Loader from 'components/Loader/Loader';
 import { ReactComponent as NotFound } from 'assets/illustrations/404 Error.svg';
 import styles from './Artwork.module.scss';
 import utilsStyles from 'styles/utils.module.scss';
+import Caroussel from 'components/Caroussel/Caroussel';
 
 const ArtworkPage = () => {
   const { id } = useParams<{ id: string }>();

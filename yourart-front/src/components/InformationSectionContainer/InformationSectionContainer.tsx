@@ -3,6 +3,7 @@ import styles from './InformationSectionContainer.module.scss';
 import InformationSection from './InformationSection/InformationSection';
 import { Artwork } from 'types/data.type';
 import cn from 'classnames';
+import { Caroussel } from 'components';
 
 type Props = {
   entity: Artwork;
@@ -50,6 +51,13 @@ const InformationSectionContainer = ({ entity }: Props) => {
             );
           })}
         </div>
+      </InformationSection>
+      <InformationSection
+        isHidden={openSection !== 'other images'}
+        onClick={() => toggleOpenSection('other images')}
+        title={`${entity.artistShort.fullname.toUpperCase()}'S OTHER MASTERPIECES`}
+      >
+        <Caroussel images={entity.otherArtworkImages} />
       </InformationSection>
     </div>
   );

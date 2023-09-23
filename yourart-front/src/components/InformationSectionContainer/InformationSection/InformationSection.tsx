@@ -1,6 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import styles from './InformationSection.module.scss';
+import { IoIosArrowDown } from 'react-icons/io';
 
 type Props = {
   title: string;
@@ -17,9 +18,13 @@ const InformationSection = ({
 }: Props) => {
   return (
     <div className={styles.container}>
-      <h2 className={styles.title} onClick={handleClick}>
-        {title}
-      </h2>
+      <div className={styles.titleContainer} onClick={handleClick}>
+        <h2 className={styles.title}>{title}</h2>
+        <IoIosArrowDown
+          className={cn(styles.arrow, { [styles.reversed]: !isHidden })}
+          size={24}
+        />
+      </div>
       <div
         className={cn(styles.description, {
           [styles.hidden]: isHidden,
