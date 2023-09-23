@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.artworkName {
+  margin: 0;
+  font-family: PolySansMedian;
+  font-size: 2rem;
+}
+
+.authorName {
+  font-family: PolySansMedian;
+  font-size: 1.5rem;
+}
+
+.dimensions {
+  font-family: PolySansNeutralMono;
+  font-size: 1rem;
+}
+
+.price {
+  font-size: 2rem;
+}

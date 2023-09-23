@@ -7,16 +7,17 @@
 }
 
 .link {
-  color: $gray;
+  color: black;
   font-weight: 700;
   text-decoration: none;
+  opacity: 0.6;
 
   &:hover {
-    color: black;
+    opacity: 1;
     text-decoration: underline;
   }
 
   &.active {
-    color: black;
+    opacity: 1;
   }
 }

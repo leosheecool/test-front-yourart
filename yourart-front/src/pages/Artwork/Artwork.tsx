@@ -1,13 +1,15 @@
-import { Navbar } from 'components';
-import React, { useState } from 'react';
-import cn from 'classnames';
+import {
+  ImageViewer,
+  InformationSectionContainer,
+  MainEntityInfoContainer,
+  Navbar,
+} from 'components';
 import { GiSandsOfTime } from 'react-icons/gi';
-import { ImEye } from 'react-icons/im';
-import { TbBrandUnity } from 'react-icons/tb';
 import { FaCheck, FaTruck, FaLocationPinLock } from 'react-icons/fa6';
 import { MdTimer } from 'react-icons/md';
-import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import cn from 'classnames';
 import styles from './Artwork.module.scss';
+import utilsStyles from 'styles/utils.module.scss';
 
 const mockedArtwork = {
   _id: '6310ddf23ca3c5016657845f',
@@ -86,8 +88,6 @@ const mockedArtwork = {
 };
 
 const Artwork = () => {
-  const [openSection, setOpenSection] = useState('');
-
   const entity = mockedArtwork;
   const isFav = false;
 
@@ -101,53 +101,22 @@ const Artwork = () => {
     },
   };
 
-  const toggleOpenSection = (section: string) => {
-    setOpenSection(section === openSection ? '' : section);
-  };
-
   return (
     <div className={styles.container}>
       <Navbar entity={formattedEntity} />
       <div className={styles.salesContainer}>
-        <div className={styles.imageContainer}>
-          <img
-            src={entity.imageUrl}
-            alt={entity.title}
-            className={styles.image}
-          />
-          <div className={styles.viewOptionsContainer}>
-            <div className={styles.textWithIconContainer}>
-              <ImEye size={18} />
-              <p>View in a room</p>
-            </div>
-            <div className={styles.textWithIconContainer}>
-              <TbBrandUnity size={18} />
-              <p>AR view</p>
-            </div>
-          </div>
-        </div>
+        <ImageViewer entity={entity} />
         <div>
-          <div className={styles.mainInfoContainer}>
-            <div>
-              <h1 className={styles.artworkName}>{entity.fullname}</h1>
-              <p className={styles.authorName}>
-                {entity.artistShort.fullname} {entity.artistShort.country}
-              </p>
-              <p className={styles.dimensions}>
-                {entity.dimensions.width}W x {entity.dimensions.height}H x{' '}
-                {entity.dimensions.depth}D in
-              </p>
-              <p className={styles.price}>{entity.price}€</p>
-            </div>
-            {isFav ? <AiFillStar size={24} /> : <AiOutlineStar size={24} />}
-          </div>
-          <button className={styles.button}>Acquire</button>
-          <button className={styles.button}>Make an offer</button>
-          <div className={styles.textWithIconContainer}>
+          <MainEntityInfoContainer entity={entity} isFav={isFav} />
+          <button className={utilsStyles.button}>Acquire</button>
+          <button className={cn(utilsStyles.button, utilsStyles.secondary)}>
+            Make an offer
+          </button>
+          <div className={utilsStyles.textWithIconContainer}>
             <GiSandsOfTime size={18} />
             <p>PRE-RESERVE FOR 24HOURS</p>
           </div>
-          <div className={styles.textWithIconContainer}>
+          <div className={utilsStyles.textWithIconContainer}>
             <FaCheck />
             <p>131€ estimated delivery fee for France</p>
           </div>
@@ -159,69 +128,24 @@ const Artwork = () => {
             <input type="text" placeholder="Country" />
             <input type="number" placeholder="Zip code" />
           </div>
-          <div className={styles.textWithIconContainer}>
+          <div className={utilsStyles.textWithIconContainer}>
             <FaTruck />
             <p>Delivery fee is 129€</p>
           </div>
-          <div className={styles.textWithIconContainer}>
+          <div className={utilsStyles.textWithIconContainer}>
             <FaLocationPinLock />
             <p>
               Free pickup in <strong>Bruxelles, Belgium</strong>
             </p>
           </div>
-          <div className={styles.textWithIconContainer}>
+          <div className={utilsStyles.textWithIconContainer}>
             <MdTimer />
             <p>Try 14 days at home for free</p>
           </div>
           <div className={styles.overviewContainer}></div>
         </div>
       </div>
-      <div className={styles.informationSectionsContainer}>
-        <div className={styles.informationSection}>
-          <h2
-            className={styles.informationSectionTitle}
-            onClick={() => toggleOpenSection('description')}
-          >
-            DESCRIPTION
-          </h2>
-          <div
-            className={cn(styles.description, {
-              [styles.hidden]: openSection !== 'description',
-            })}
-          >
-            {entity.description}
-          </div>
-        </div>
-        <div className={styles.informationSection}>
-          <h2
-            className={styles.informationSectionTitle}
-            onClick={() => toggleOpenSection('subject')}
-          >
-            SUBJECT, MEDIUM, STYLE, MATERIALS
-          </h2>
-          <div
-            className={cn(styles.tagsContainer, {
-              [styles.hidden]: openSection !== 'subject',
-            })}
-          >
-            {['subjects', 'mediums', 'styles', 'materials'].map((key) => {
-              const value = entity[key as keyof typeof entity] as string[];
-              return (
-                <React.Fragment key={key}>
-                  <h3>{key.toUpperCase()}</h3>
-                  <div>
-                    {value.map((tag: string) => (
-                      <span className={styles.tag} key={tag}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </React.Fragment>
-              );
-            })}
-          </div>
-        </div>
-      </div>
+      <InformationSectionContainer entity={entity} />
     </div>
   );
 };

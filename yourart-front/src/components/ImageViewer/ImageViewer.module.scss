@@ -1,0 +1,20 @@
+.image {
+  width: 100%;
+  object-fit: contain;
+}
+
+.viewOptionsContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: fit-content;
+  margin: auto;
+  justify-items: center;
+  gap: 48px;
+}
+
+@media screen and (max-width: 768px) {
+  .viewOptionsContainer {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

@@ -1,0 +1,10 @@
+.tagsContainer {
+  display: grid;
+  grid-template-columns: 110px auto;
+  align-items: center;
+  gap: 16px 8px;
+
+  .tagTitle {
+    margin: 0;
+  }
+}
