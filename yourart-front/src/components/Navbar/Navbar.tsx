@@ -1,24 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Navbar.module.scss';
+import { Artwork } from 'types/data.type';
 
 type Props = {
-  entity: {
-    category: string;
-    title: string;
-    id: string;
-    author: {
-      fullname: string;
-      id: string;
-    };
-  };
+  entity: Artwork;
 };
 
 const Navbar = ({ entity }: Props) => {
-  const { category, title, author } = entity;
-
   const formattedCategory =
-    category.charAt(0) + category.slice(1).toLowerCase();
+    entity.category.charAt(0) + entity.category.slice(1).toLowerCase();
 
   const links = [
     {
@@ -30,12 +21,12 @@ const Navbar = ({ entity }: Props) => {
       url: `/${formattedCategory}`,
     },
     {
-      label: `${author.fullname} Artworks`,
-      url: `/author/${author.id}`,
+      label: `${entity.artistShort.fullname} Artworks`,
+      url: `/author/${entity.artistId}`,
     },
     {
-      label: title,
-      url: `/artwork/${entity.id}`,
+      label: entity.title,
+      url: `/artwork/${entity._id}`,
     },
   ];
 
